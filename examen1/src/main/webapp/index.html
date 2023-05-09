@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ecuación de segundo grado</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ecuación de segundo grado</h1>
+    <form id="equation-form">
+      <div class="form-group">
+        <label for="coef-a">Coeficiente a:</label>
+        <input type="number" id="coef-a" name="coef-a" required>
+      </div>
+      <div class="form-group">
+        <label for="coef-b">Coeficiente b:</label>
+        <input type="number" id="coef-b" name="coef-b" required>
+      </div>
+      <div class="form-group">
+        <label for="coef-c">Coeficiente c:</label>
+        <input type="number" id="coef-c" name="coef-c" required>
+      </div>
+      <button type="submit" class="btn-calculate">Calcular</button>
+    </form>
+    <div id="result-container" class="result"></div>
+  </div>
+  <script src="model.js"></script>
+  <script src="view.js"></script>
+  <script src="controller.js"></script>
+</body>
+</html>
