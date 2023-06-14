@@ -1,38 +1,44 @@
-create database enrollments;
-use enrollments;
+CREATE DATABASE enrollments;
+USE enrollments;
 
-create table career(
-id int primary key auto_increment,
-description varchar(128)
+CREATE TABLE career (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  description VARCHAR(128)
 );
 
-create table subject(
-id int primary key auto_increment,
-description varchar(128),
-career_id int,
-foreign key (career_id) references career(id)
+CREATE TABLE subject (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  description VARCHAR(128),
+  career_id INT,
+  FOREIGN KEY (career_id) REFERENCES career(id)
 );
 
-create table user(
-id int primary key,
-username varchar(128) unique,
-password varchar(32),
-type int not null,
-career_id int,
-status int not null,
-foreign key (career_id) references career(id)
+CREATE TABLE user (
+  id INT PRIMARY KEY,
+  username VARCHAR(128) UNIQUE,
+  password VARCHAR(32),
+  type INT NOT NULL,
+  career_id INT,
+  status INT NOT NULL,
+  FOREIGN KEY (career_id) REFERENCES career(id)
 );
 
-/*
--- Agregar índices a las tablas
-ALTER TABLE subject ADD INDEX fk_subject_career_idx (career_id);
-ALTER TABLE user ADD INDEX fk_user_career_idx (career_id);
 
--- Agregar datos de ejemplo a la tabla "career"
 INSERT INTO career (description) VALUES
-    ('Carrera 1'),
-    ('Carrera 2'),
-    ('Carrera 3');
+  ('Informatica 1'),
+  ('Leyes 2'),
+  ('Ingenieria 3');
 
-COMMIT;
-*/
+
+INSERT INTO subject (description, career_id) VALUES
+  ('Tecnologia 1', 1),
+  ('Programacion 2', 1),
+  ('Derecho 3', 2),
+  ('Leyes 4', 2),
+  ('Sistemas operativos 5', 3);
+
+
+INSERT INTO user (id, username, password, type, career_id, status) VALUES
+  (123456, 'kevs1', '1234', 0, 1, 1),
+  (789012, 'david2', '2345', 1, 2, 1),
+  (345678, 'vane3', '3456', 2, 3, 0);
